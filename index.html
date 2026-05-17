@@ -43,7 +43,10 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html, body {
+    width: 100%;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
     font-family: var(--font-sans);
     color: var(--txt-sec);
     background: var(--bg);
@@ -99,17 +102,22 @@
 
   .stage {
     position: relative;
+    width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 48px 24px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   /* Panel — Night Bloom surface, brand-correct */
   .panel {
     width: 100%;
     max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
     background: rgba(24, 11, 30, 0.82);
     backdrop-filter: blur(20px) saturate(1.15);
     -webkit-backdrop-filter: blur(20px) saturate(1.15);
@@ -728,7 +736,11 @@
     display: none;
     animation: fadeUp 0.7s var(--ease);
   }
-  .view.active { display: block; }
+  .view.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
