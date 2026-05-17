@@ -656,6 +656,163 @@
     .cta-block { margin: 40px -22px -40px; padding: 40px 24px 44px; }
   }
 
+  /* ===== PATTERN BREAKDOWN ===== */
+  .pattern-breakdown {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pattern-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pattern-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--txt-muted);
+  }
+
+  .pattern-row.primary .pattern-label {
+    color: var(--moon);
+  }
+
+  .pattern-row.primary .pattern-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--accent-lt);
+    letter-spacing: 0;
+  }
+
+  .pattern-row.secondary .pattern-label {
+    color: var(--txt-sec);
+  }
+
+  .pattern-pct {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--detail);
+    letter-spacing: 0;
+  }
+
+  .pattern-row.primary .pattern-pct {
+    color: var(--accent-lt);
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .pattern-bar {
+    height: 4px;
+    background: rgba(247,237,241,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .pattern-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--tertiary), var(--detail));
+    border-radius: 2px;
+    width: 0;
+    animation: fillBar 1.2s var(--ease) forwards;
+    animation-delay: 0.6s;
+    box-shadow: 0 0 8px rgba(196,120,154,0.3);
+  }
+
+  .pattern-row.primary .pattern-fill {
+    background: linear-gradient(90deg, var(--accent), var(--accent-lt));
+    box-shadow: 0 0 12px rgba(177,106,162,0.5);
+  }
+
+  @keyframes fillBar {
+    from { width: 0; }
+    to   { width: var(--target-width); }
+  }
+
+  /* ===== BRIDGE LINE (between closing and CTA) ===== */
+  .bridge-block {
+    margin: 0 auto 8px;
+    max-width: 580px;
+    padding: 28px 24px 0;
+    text-align: center;
+  }
+
+  .bridge-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(17px, 2.5vw, 20px);
+    line-height: 1.55;
+    color: var(--txt-sec);
+    font-weight: 400;
+  }
+
+  .bridge-line em {
+    font-style: italic;
+    color: var(--accent-lt);
+    font-weight: 500;
+  }
+
+  /* ===== MODULE GRID INSIDE CTA ===== */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 520px;
+    margin: 24px auto 4px;
+  }
+
+  .module-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(13, 6, 24, 0.45);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.3s var(--ease);
+  }
+
+  .module-item:hover {
+    border-color: var(--accent);
+    background: rgba(70, 29, 52, 0.4);
+  }
+
+  .mod-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent-lt);
+    line-height: 1;
+    min-width: 24px;
+  }
+
+  .mod-name {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--txt-sec);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 540px) {
+    .modules-grid { grid-template-columns: 1fr; gap: 8px; max-width: 360px; }
+    .module-item { padding: 11px 14px; }
+  }
+
   /* ===== EMAIL CAPTURE ===== */
   .email-capture {
     margin-top: 36px;
@@ -867,7 +1024,8 @@ const ARCHETYPES = {
     ],
     costing: "You are spending your most creative years <em>rehearsing</em> instead of living. The opportunities you analyze are the ones other women — less qualified, less brilliant — quietly walk through. Your magnetism is dimmed by the static of your own mind. And the love, money, and recognition you crave cannot land in a body that is bracing.",
     shift: "Your next identity shift is from <em>certainty</em> to <em>embodied trust</em>. Not blind faith. Sovereign knowing. The woman you're becoming makes decisions from her body, not her browser tabs. She moves before she's ready because she has become her own evidence.",
-    closing: "You were never broken. You were <em>protective</em>. And it's safe now to put the armor down."
+    closing: "You were never broken. You were <em>protective</em>. And it's safe now to put the armor down.",
+    bridgeLine: "The Overthinker doesn't need another book, framework, or 5-step guide. She needs to recalibrate the nervous system that's been running the show — so the loop she's been trapped in finally <em>quiets</em>."
   },
   performer: {
     name: "The Performer",
@@ -882,7 +1040,8 @@ const ARCHETYPES = {
     ],
     costing: "You are building a life that looks impressive and feels lonely. Every achievement raises the floor of what 'enough' means — so the finish line keeps moving. You attract relationships and clients who appreciate what you <em>do</em>, not who you <em>are</em>. And the day you stop performing is the day you're most afraid to meet yourself.",
     shift: "Your next identity shift is from <em>earning</em> to <em>receiving</em>. From proving to <em>presence</em>. The woman you're becoming knows her worth is not negotiable with her calendar. She is paid, chosen, and adored for who she is — not what she can squeeze out of her nervous system this quarter.",
-    closing: "You don't have to earn the life you already deserve. You only have to stop <em>declining</em> it."
+    closing: "You don't have to earn the life you already deserve. You only have to stop <em>declining</em> it.",
+    bridgeLine: "The Performer cannot <em>think</em> her way out of this pattern — she's tried, and her resume is the proof. She needs an embodied recalibration of worth itself. A version of her that no longer has to earn the right to exist."
   },
   hyperIndependent: {
     name: "The Hyper-Independent Woman",
@@ -897,7 +1056,8 @@ const ARCHETYPES = {
     ],
     costing: "You are mistaking <em>armor</em> for power. The intimacy you crave cannot survive inside the fortress you've built to be safe. The wealth, love, and ease available to you cannot enter through a closed hand. And the most exhausting part is no one knows how tired you are — because you've made sure of it.",
     shift: "Your next identity shift is from <em>self-protection</em> to <em>sovereign receptivity</em>. The woman you're becoming knows that receiving is not weakness — it is the most advanced expression of trust. She is supported, held, and resourced. Not because she gave up her power. Because she finally <em>understood</em> it.",
-    closing: "Independence kept you alive. <em>Interdependence</em> is what will make you free."
+    closing: "Independence kept you alive. <em>Interdependence</em> is what will make you free.",
+    bridgeLine: "The Hyper-Independent Woman has read all the books, done all the work alone, and is still — somehow — holding everything. She needs a container that holds <em>her</em>, for once. A space where receiving is the practice, not the threat."
   },
   selfAbandoner: {
     name: "The Self-Abandoner",
@@ -912,7 +1072,8 @@ const ARCHETYPES = {
     ],
     costing: "You are paying for love with your <em>self</em>, and the price keeps going up. The people in your life are in relationship with your accommodation, not your essence. Your desires are atrophying from disuse. And the longer this continues, the harder it becomes to remember the woman underneath — the one with preferences, edges, and a voice.",
     shift: "Your next identity shift is from <em>abandonment</em> to <em>devotion</em> — to yourself first. The woman you're becoming knows that being chosen by everyone is not the same as being <em>chosen by the right ones</em>. She is no longer auditioning for her own life.",
-    closing: "The relationships built on your smallness cannot survive your <em>return</em>. Let them go."
+    closing: "The relationships built on your smallness cannot survive your <em>return</em>. Let them go.",
+    bridgeLine: "The Self-Abandoner cannot find her way home by reading about boundaries — she's tried. She needs to <em>reinhabit</em> herself. To rebuild the identity she gave away in pieces over a lifetime — and become a woman who no longer disappears in proximity."
   },
   invisible: {
     name: "The Invisible Woman",
@@ -927,7 +1088,8 @@ const ARCHETYPES = {
     ],
     costing: "You are starving the world of the exact medicine you were sent here to deliver. The women you could lead are still waiting. The money flowing to less-resonant voices is the money your visibility was meant to <em>redirect</em>. And every day you hide, the gap between who you <em>are</em> and who you're <em>letting yourself be</em> becomes a kind of grief.",
     shift: "Your next identity shift is from <em>hiding</em> to <em>holy visibility</em>. The woman you're becoming understands that her presence is not a performance — it is a transmission. She is no longer waiting to be ready. She is becoming ready <em>by being seen</em>.",
-    closing: "The room is waiting for the woman you've been <em>rehearsing</em>. It is time."
+    closing: "The room is waiting for the woman you've been <em>rehearsing</em>. It is time.",
+    bridgeLine: "The Invisible Woman will not be coached out of hiding. She needs to be <em>rebuilt</em> — at the level of identity, nervous system, and frequency — into a woman whose visibility is no longer a threat to her safety, but the natural extension of who she's become."
   }
 };
 
@@ -939,108 +1101,108 @@ const QUESTIONS = [
     q: "When something good happens to you, your first instinct is to —",
     options: [
       { text: "Quietly brace for the other shoe to drop.",          weights: { ot: 3, iv: 1 } },
-      { text: "Look for the next thing to achieve.",                 weights: { pf: 3 } },
+      { text: "Look for the next thing to achieve.",                 weights: { pf: 3, ot: 1 } },
       { text: "Downplay it before anyone notices.",                  weights: { iv: 3, sa: 1 } },
-      { text: "Feel uncomfortable if someone wants to celebrate you.", weights: { hi: 2, iv: 2 } }
+      { text: "Feel uncomfortable if someone wants to celebrate you.", weights: { hi: 3, iv: 1 } }
     ]
   },
   {
     q: "Rest, if you're honest, feels —",
     options: [
-      { text: "Like something I have to earn first.",                weights: { pf: 3 } },
-      { text: "Like an opening for everything I'm avoiding to surface.", weights: { ot: 3 } },
-      { text: "Inefficient. I could be handling things.",            weights: { hi: 3, pf: 1 } },
-      { text: "Selfish. There's always someone who needs me.",       weights: { sa: 3 } }
+      { text: "Like something I have to earn first.",                weights: { pf: 3, ot: 1 } },
+      { text: "Like an opening for everything I'm avoiding to surface.", weights: { ot: 3, sa: 1 } },
+      { text: "Inefficient. I could be handling things.",            weights: { hi: 3, ot: 1 } },
+      { text: "Selfish. There's always someone who needs me.",       weights: { sa: 3, iv: 1 } }
     ]
   },
   {
     q: "Someone offers you significant help — financial, emotional, or otherwise. You notice —",
     options: [
-      { text: "An almost-immediate impulse to decline.",             weights: { hi: 3 } },
-      { text: "A worry you'll owe them something later.",            weights: { sa: 2, hi: 1 } },
-      { text: "A spiral of overthinking whether to accept.",         weights: { ot: 3 } },
-      { text: "A quiet guilt — as if I haven't earned it.",          weights: { pf: 2, iv: 1 } }
+      { text: "An almost-immediate impulse to decline.",             weights: { hi: 3, iv: 1 } },
+      { text: "A worry you'll owe them something later.",            weights: { sa: 3, ot: 1 } },
+      { text: "A spiral of overthinking whether to accept.",         weights: { ot: 3, iv: 1 } },
+      { text: "A quiet guilt — as if I haven't earned it.",          weights: { pf: 3, iv: 1 } }
     ]
   },
   {
     q: "When you imagine being fully seen — your work, your voice, your face — at scale, your body —",
     options: [
-      { text: "Tightens. There's a flinch I can't quite explain.",   weights: { iv: 3 } },
-      { text: "Goes into preparation mode. I'd need to be ready first.", weights: { pf: 2, ot: 2 } },
-      { text: "Wants to control the narrative completely.",          weights: { hi: 2, ot: 2 } },
-      { text: "Worries about who I'd disappoint or threaten.",       weights: { sa: 3 } }
+      { text: "Tightens. There's a flinch I can't quite explain.",   weights: { iv: 3, ot: 1 } },
+      { text: "Goes into preparation mode. I'd need to be ready first.", weights: { pf: 3, ot: 1 } },
+      { text: "Wants to control the narrative completely.",          weights: { hi: 3, ot: 1 } },
+      { text: "Worries about who I'd disappoint or threaten.",       weights: { sa: 3, iv: 1 } }
     ]
   },
   {
     q: "In your closest relationships, the version of you they know is —",
     options: [
-      { text: "The capable one. The one who handles things.",        weights: { hi: 3, pf: 1 } },
-      { text: "The accommodating one. The one who makes it easy.",   weights: { sa: 3 } },
-      { text: "The successful one. The one who's doing well.",       weights: { pf: 3 } },
-      { text: "A curated version. The full me is mostly private.",   weights: { iv: 2, ot: 2 } }
+      { text: "The capable one. The one who handles things.",        weights: { hi: 3, iv: 1 } },
+      { text: "The accommodating one. The one who makes it easy.",   weights: { sa: 3, ot: 1 } },
+      { text: "The successful one. The one who's doing well.",       weights: { pf: 3, iv: 1 } },
+      { text: "A curated version. The full me is mostly private.",   weights: { iv: 3, ot: 1 } }
     ]
   },
   {
     q: "A decision is sitting in front of you. You usually —",
     options: [
-      { text: "Research, list, weigh — and still feel unsure.",      weights: { ot: 3 } },
-      { text: "Default to whatever keeps the peace.",                weights: { sa: 3 } },
-      { text: "Decide alone. I don't want to be influenced.",        weights: { hi: 3 } },
-      { text: "Choose the path with the most visible payoff.",       weights: { pf: 2, iv: 1 } }
+      { text: "Research, list, weigh — and still feel unsure.",      weights: { ot: 3, iv: 1 } },
+      { text: "Default to whatever keeps the peace.",                weights: { sa: 3, ot: 1 } },
+      { text: "Decide alone. I don't want to be influenced.",        weights: { hi: 3, iv: 1 } },
+      { text: "Choose the path with the most visible payoff.",       weights: { pf: 3, iv: 1 } }
     ]
   },
   {
     q: "Your relationship with money currently feels most like —",
     options: [
-      { text: "A scoreboard for whether I'm doing enough.",          weights: { pf: 3 } },
+      { text: "A scoreboard for whether I'm doing enough.",          weights: { pf: 3, ot: 1 } },
       { text: "Something I have to white-knuckle into existence.",   weights: { hi: 3, ot: 1 } },
-      { text: "Something I shrink from asking for, raising, or naming.", weights: { sa: 2, iv: 2 } },
-      { text: "Something I overthink — pricing, spending, all of it.", weights: { ot: 3 } }
+      { text: "Something I shrink from asking for, raising, or naming.", weights: { sa: 3, iv: 1 } },
+      { text: "Something I overthink — pricing, spending, all of it.", weights: { ot: 3, iv: 1 } }
     ]
   },
   {
     q: "The thought you'd never say out loud is closest to —",
     options: [
-      { text: "If I stopped performing, I'm not sure I'd be loved.", weights: { pf: 3 } },
-      { text: "I don't actually know what I want anymore.",          weights: { sa: 3 } },
-      { text: "No one is coming. It's always been on me.",           weights: { hi: 3 } },
+      { text: "If I stopped performing, I'm not sure I'd be loved.", weights: { pf: 3, iv: 1 } },
+      { text: "I don't actually know what I want anymore.",          weights: { sa: 3, ot: 1 } },
+      { text: "No one is coming. It's always been on me.",           weights: { hi: 3, iv: 1 } },
       { text: "I'm meant for more than this — and it terrifies me.", weights: { iv: 3, ot: 1 } }
     ]
   },
   {
     q: "When a conflict arises with someone you care about, you —",
     options: [
-      { text: "Replay it for days afterward, editing what I should have said.", weights: { ot: 3 } },
-      { text: "Smooth it over before my own feelings have finished forming.",   weights: { sa: 3 } },
-      { text: "Pull back emotionally. I don't need this.",           weights: { hi: 3 } },
-      { text: "Try to be the bigger person — even when I'm the one hurt.", weights: { pf: 2, sa: 1 } }
+      { text: "Replay it for days afterward, editing what I should have said.", weights: { ot: 3, iv: 1 } },
+      { text: "Smooth it over before my own feelings have finished forming.",   weights: { sa: 3, iv: 1 } },
+      { text: "Pull back emotionally. I don't need this.",           weights: { hi: 3, iv: 1 } },
+      { text: "Try to be the bigger person — even when I'm the one hurt.", weights: { pf: 3, ot: 1 } }
     ]
   },
   {
     q: "Your body, lately, has been —",
     options: [
-      { text: "Tense in places I can't seem to soften.",             weights: { hi: 2, ot: 2 } },
-      { text: "Tired in a way sleep doesn't fix.",                   weights: { pf: 3 } },
-      { text: "Quiet. I've been ignoring its signals.",              weights: { sa: 3 } },
-      { text: "Bracing — like it's waiting for something.",          weights: { iv: 2, ot: 2 } }
+      { text: "Tense in places I can't seem to soften.",             weights: { hi: 3, ot: 1 } },
+      { text: "Tired in a way sleep doesn't fix.",                   weights: { pf: 3, iv: 1 } },
+      { text: "Quiet. I've been ignoring its signals.",              weights: { sa: 3, iv: 1 } },
+      { text: "Bracing — like it's waiting for something.",          weights: { iv: 3, ot: 1 } }
     ]
   },
   {
     q: "When you watch another woman receive something you want — visibility, love, money, ease — you feel —",
     options: [
-      { text: "Curious. What did she do that I haven't?",            weights: { pf: 2, ot: 1 } },
-      { text: "A pang of 'why not me' — and then guilt for thinking it.", weights: { iv: 3 } },
-      { text: "Quietly competitive. I could do it better.",          weights: { hi: 2, pf: 1 } },
-      { text: "Happy for her — and a little erased.",                weights: { sa: 3 } }
+      { text: "Curious. What did she do that I haven't?",            weights: { pf: 3, iv: 1 } },
+      { text: "A pang of 'why not me' — and then guilt for thinking it.", weights: { iv: 3, sa: 1 } },
+      { text: "Quietly competitive. I could do it better.",          weights: { hi: 3, ot: 1 } },
+      { text: "Happy for her — and a little erased.",                weights: { sa: 3, iv: 1 } }
     ]
   },
   {
     q: "If you let yourself feel it, the woman underneath all of this is —",
     options: [
-      { text: "Exhausted from holding everything together.",         weights: { hi: 2, pf: 2 } },
-      { text: "Quietly grieving the version of her life she hasn't lived yet.", weights: { iv: 3 } },
-      { text: "Hungry to be known — fully, without performing.",     weights: { sa: 2, pf: 1 } },
-      { text: "Ready to stop second-guessing everything she already knows.", weights: { ot: 3 } }
+      { text: "Exhausted from holding everything together.",         weights: { hi: 3, ot: 1 } },
+      { text: "Quietly grieving the version of her life she hasn't lived yet.", weights: { iv: 3, sa: 1 } },
+      { text: "Hungry to be known — fully, without performing.",     weights: { sa: 3, iv: 1 } },
+      { text: "Ready to stop second-guessing everything she already knows.", weights: { ot: 3, iv: 1 } }
     ]
   }
 ];
@@ -1117,12 +1279,54 @@ function showResult() {
     ot: 'overthinker', pf: 'performer', hi: 'hyperIndependent',
     sa: 'selfAbandoner', iv: 'invisible'
   };
+  const shortName = {
+    ot: 'Overthinker', pf: 'Performer', hi: 'Hyper-Independent',
+    sa: 'Self-Abandoner', iv: 'Invisible'
+  };
   const arch = ARCHETYPES[keyMap[primaryKey]];
   const secondaryArch = ARCHETYPES[keyMap[secondaryKey]];
+
+  // Calculate percentage breakdown across all 5 archetypes
+  const totalPoints = Object.values(state.scores).reduce((a,b) => a+b, 0) || 1;
+  const breakdown = sorted.map(([key, score]) => ({
+    key,
+    name: shortName[key],
+    score,
+    pct: Math.round((score / totalPoints) * 100)
+  }));
+
+  // Build a narrative line describing her hybrid pattern
+  const primaryPct = breakdown[0].pct;
+  const secondaryPct = breakdown[1].pct;
+  let hybridLine;
+  if (primaryPct >= 45) {
+    hybridLine = `You are predominantly ${arch.name} — with a meaningful thread of <span class="arch-name">${secondaryArch.name}</span> shaping how the pattern shows up.`;
+  } else if (primaryPct - secondaryPct <= 6) {
+    hybridLine = `You are running two patterns almost equally — ${arch.name} and <span class="arch-name">${secondaryArch.name}</span> — which often means you've been switching between them depending on context.`;
+  } else {
+    hybridLine = `Your dominant identity is ${arch.name}, layered with a strong <span class="arch-name">${secondaryArch.name}</span> thread that compounds the pattern.`;
+  }
 
   document.getElementById('view-quiz').classList.remove('active');
   document.getElementById('view-result').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Build the breakdown bars
+  const breakdownBars = breakdown.map((item, i) => {
+    const isPrimary = i === 0;
+    const isSecondary = i === 1;
+    return `
+      <div class="pattern-row ${isPrimary ? 'primary' : ''} ${isSecondary ? 'secondary' : ''}">
+        <div class="pattern-label">
+          <span class="pattern-name">${item.name}</span>
+          <span class="pattern-pct">${item.pct}%</span>
+        </div>
+        <div class="pattern-bar">
+          <div class="pattern-fill" style="--target-width: ${item.pct}%;"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
 
   const html = `
     <div class="stagger">
@@ -1130,7 +1334,19 @@ function showResult() {
       <div class="result-eyebrow">Your Dominant Survival Identity</div>
       <h1 class="result-name">${arch.name}</h1>
       <p class="result-pattern-line">${arch.tagline}</p>
-      <div class="secondary-note">With a secondary thread of <span class="arch-name">${secondaryArch.name}</span></div>
+      <div class="secondary-note">${hybridLine}</div>
+      <div class="divider-stars">✦ ✦ ✦</div>
+
+      <div class="result-section">
+        <h3><span class="flank">◆</span>Your Full Pattern<span class="flank">◆</span></h3>
+        <p style="font-size: 13px; color: var(--txt-muted); margin-bottom: 22px; max-width: 480px;">
+          You're not one archetype. You're a <em style="font-family: var(--font-display); font-style: italic; color: var(--accent-lt); font-size: 15px;">pattern</em>. Here's how your survival identity distributes across all five:
+        </p>
+        <div class="pattern-breakdown">
+          ${breakdownBars}
+        </div>
+      </div>
+
       <div class="divider-stars">✦ ✦ ✦</div>
 
       <div class="result-section">
@@ -1157,13 +1373,34 @@ function showResult() {
 
       <div class="closing">"${arch.closing}"</div>
 
+      <div class="bridge-block">
+        <p class="bridge-line">${arch.bridgeLine}</p>
+      </div>
+
       <div class="cta-block">
-        <div class="micro-italic" style="color: var(--accent-lt); margin-bottom: 8px;">The Next Step</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 4vw, 34px); color: var(--txt); line-height: 1.25; margin-bottom: 18px;">
-          Stop waiting for permission<br/>to become <em style="color: var(--accent-lt); font-style: italic; font-weight: 400;">her.</em>
+        <div class="micro-italic" style="color: var(--accent-lt); margin-bottom: 8px;">The Recalibration</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4.5vw, 38px); color: var(--txt); line-height: 1.2; margin-bottom: 18px;">
+          Quantum <em style="color: var(--accent-lt); font-style: italic; font-weight: 400;">Queen.</em>
         </h2>
-        <p class="lede">This is exactly the identity recalibration work we go deeply into inside <em>Quantum Queen</em> — the 90-day container for women rewriting the subconscious patterns running their relationships, money, and visibility.</p>
+        <p class="lede" style="font-style: italic; color: var(--detail); font-family: var(--font-display); font-size: 18px; margin-bottom: 22px;">
+          The 90-day identity recalibration for women rewriting the subconscious patterns running their relationships, money, and visibility.
+        </p>
+
+        <div class="modules-grid">
+          <div class="module-item"><span class="mod-num">01</span><span class="mod-name">The Foundation</span></div>
+          <div class="module-item"><span class="mod-num">02</span><span class="mod-name">Exploring Your Dark Side</span></div>
+          <div class="module-item"><span class="mod-num">03</span><span class="mod-name">The Limiting Belief Audit</span></div>
+          <div class="module-item"><span class="mod-num">04</span><span class="mod-name">Quantum Leaping</span></div>
+          <div class="module-item"><span class="mod-num">05</span><span class="mod-name">Sovereign Queen Era</span></div>
+          <div class="module-item"><span class="mod-num">06</span><span class="mod-name">Custom Tracks &amp; Integration</span></div>
+        </div>
+
+        <p class="lede" style="margin-top: 24px;">
+          Every survival identity — the Overthinker, the Performer, the Hyper-Independent, the Self-Abandoner, the Invisible — gets dismantled across these six modules. <em>Not in pieces. As a whole woman.</em>
+        </p>
+
         <button class="btn" onclick="openMasterclass()"><span>Watch The Free Masterclass</span></button>
+        <div class="micro-note" style="margin-top: 16px;">A behind-the-scenes look at the full 90-day process</div>
 
         <div class="email-capture">
           <div class="micro-label">Or — Receive Your Full Personalized Breakdown</div>
@@ -1171,7 +1408,7 @@ function showResult() {
             <input type="email" class="email-input" id="email-field" placeholder="your email" />
             <button class="email-btn" onclick="submitEmail()">Send It</button>
           </div>
-          <div class="micro-note" style="margin-top: 14px;">Includes your secondary archetype layer <span class="dot">✦</span> a private invitation</div>
+          <div class="micro-note" style="margin-top: 14px;">Includes your full archetype profile <span class="dot">✦</span> a private invitation</div>
         </div>
       </div>
 
