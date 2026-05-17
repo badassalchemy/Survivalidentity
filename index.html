@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>What Survival Identity Are You Operating From? — Quantum Queen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* === BADASS ALCHEMY BRAND TOKENS === */
+    --bg:         #0D0610;
+    --bg-mid:     #180B1E;
+    --dark:       #0D0618;
+    --dark-mid:   #461D34;
+    --accent:     #733960;     /* rose plum - primary accent */
+    --accent-lt:  #B16AA2;     /* mauve pink - glow + highlights */
+    --tertiary:   #9B4E7A;     /* mid rose */
+    --detail:     #C4789A;     /* blush */
+    --violet:     #24123F;
+    --lavender:   #9CBCB9;
+    --orchid:     #C6B6CD;
+    --moon:       #F7EDF1;     /* moon pearl - body text */
+    --txt:        #F7EDF1;
+    --txt-sec:    #E8D4E0;
+    --txt-muted:  #C4A0B8;
+    --txt-faded:  #8A6080;
+    --txt-quiet:  #5A3A50;
+    --border:     rgba(179,106,162,0.15);
+    --border-lt:  rgba(179,106,162,0.28);
+    --shadow:     rgba(36,10,25,0.4);
+    --shadow-hv:  rgba(115,57,96,0.4);
+
+    --bg-image:   url('https://raw.githubusercontent.com/badassalchemy/imageassets/main/mainbackground1.jpg');
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:    'Montserrat', -apple-system, sans-serif;
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    color: var(--txt-sec);
+    background: var(--bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background image layer — darkened, blurred, atmospheric */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.55;
+    z-index: -3;
+  }
+
+  /* Deep plum gradient overlay to ground the cosmic brand */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 30%, rgba(100,30,90,0.45), transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(200,60,120,0.25), transparent 60%),
+      linear-gradient(160deg, rgba(13,6,24,0.85) 0%, rgba(26,8,40,0.78) 30%, rgba(58,15,48,0.72) 65%, rgba(92,22,64,0.78) 100%);
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  /* Star field — directly from your brand system */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(247,237,241,0.4), transparent),
+      radial-gradient(1px 1px at 60% 15%, rgba(247,237,241,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 80% 60%, rgba(247,237,241,0.35), transparent),
+      radial-gradient(1px 1px at 40% 80%, rgba(247,237,241,0.25), transparent),
+      radial-gradient(1px 1px at 10% 70%, rgba(247,237,241,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 90% 25%, rgba(247,237,241,0.4), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(247,237,241,0.25), transparent),
+      radial-gradient(1.5px 1.5px at 35% 5%, rgba(247,237,241,0.3), transparent),
+      radial-gradient(1px 1px at 75% 40%, rgba(247,237,241,0.3), transparent);
+    background-size: 600px 600px, 400px 400px, 800px 800px, 500px 500px, 700px 700px, 450px 450px, 650px 650px, 550px 550px, 750px 750px;
+  }
+
+  .stage {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+
+  /* Panel — Night Bloom surface, brand-correct */
+  .panel {
+    width: 100%;
+    max-width: 720px;
+    background: rgba(24, 11, 30, 0.82);
+    backdrop-filter: blur(20px) saturate(1.15);
+    -webkit-backdrop-filter: blur(20px) saturate(1.15);
+    border: 1px solid var(--border-lt);
+    border-radius: 16px;
+    padding: 56px 48px;
+    box-shadow:
+      0 30px 80px -20px rgba(0,0,0,0.6),
+      0 0 60px -10px rgba(115,57,96,0.25),
+      inset 0 1px 0 rgba(247,237,241,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Star overlay inside panel */
+  .panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(247,237,241,0.2), transparent),
+      radial-gradient(1.5px 1.5px at 85% 80%, rgba(247,237,241,0.25), transparent),
+      radial-gradient(1px 1px at 60% 40%, rgba(247,237,241,0.15), transparent);
+    background-size: 400px 400px, 600px 600px, 500px 500px;
+    opacity: 0.5;
+  }
+
+  /* Radial glow inside panel */
+  .panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 55% 100%, rgba(177,106,162,0.18), transparent 60%);
+  }
+
+  .panel > * { position: relative; z-index: 1; }
+
+  @media (max-width: 640px) {
+    .stage { padding: 24px 12px; }
+    .panel { padding: 40px 22px; border-radius: 14px; }
+  }
+
+  /* ===== INTRO ===== */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-lt);
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .eyebrow .star {
+    color: var(--detail);
+    margin: 0 8px;
+    font-size: 10px;
+  }
+
+  .micro-italic {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--detail);
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  h1.title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.15;
+    text-align: center;
+    color: var(--txt);
+    margin-bottom: 28px;
+    letter-spacing: -0.005em;
+  }
+
+  h1.title em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-lt);
+  }
+
+  .ornament {
+    text-align: center;
+    margin: 28px 0;
+    color: var(--accent);
+    font-size: 14px;
+    letter-spacing: 0.6em;
+  }
+
+  .ornament span:nth-child(2) { color: var(--accent-lt); }
+
+  .lede {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--txt-muted);
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 22px;
+    font-weight: 400;
+  }
+
+  .lede em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--detail);
+  }
+
+  .reveal-list {
+    list-style: none;
+    margin: 32px auto;
+    max-width: 480px;
+  }
+
+  .reveal-list li {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--txt-sec);
+    padding: 14px 0 14px 32px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .reveal-list li:last-child { border-bottom: none; }
+
+  .reveal-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: var(--accent-lt);
+    font-size: 12px;
+  }
+
+  .reveal-list em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--accent-lt);
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 16px 38px;
+    background: linear-gradient(135deg, var(--accent), var(--dark-mid));
+    color: var(--moon);
+    border: 1px solid var(--accent-lt);
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -8px var(--shadow-hv);
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-lt), var(--tertiary));
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+    z-index: 0;
+  }
+
+  .btn span { position: relative; z-index: 1; }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px -10px var(--shadow-hv), 0 0 30px -5px rgba(177,106,162,0.4);
+  }
+  .btn:hover::before { opacity: 1; }
+
+  .cta-row { text-align: center; margin-top: 36px; }
+
+  .micro-note {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--txt-faded);
+    margin-top: 18px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .micro-note .dot { color: var(--accent-lt); margin: 0 6px; }
+
+  /* ===== PROGRESS ===== */
+  .progress-wrap { margin-bottom: 44px; }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--txt-faded);
+    margin-bottom: 12px;
+  }
+
+  .progress-meta .pct { color: var(--accent-lt); }
+
+  .progress-bar {
+    height: 3px;
+    background: rgba(247,237,241,0.05);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    position: absolute;
+    inset: 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-lt));
+    border-radius: 2px;
+    transition: width 0.6s var(--ease);
+    box-shadow: 0 0 12px rgba(177,106,162,0.5);
+  }
+
+  /* ===== QUESTIONS ===== */
+  .q-number {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--detail);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .q-text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(22px, 4vw, 30px);
+    line-height: 1.3;
+    color: var(--txt);
+    text-align: center;
+    margin-bottom: 38px;
+    letter-spacing: -0.005em;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--txt-sec);
+    padding: 18px 24px 18px 50px;
+    background: rgba(13, 6, 24, 0.5);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.35s var(--ease);
+    text-align: left;
+    position: relative;
+    border-radius: 10px;
+    font-weight: 400;
+  }
+
+  .option::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s;
+  }
+
+  .option:hover {
+    background: rgba(70, 29, 52, 0.4);
+    border-color: var(--accent);
+    transform: translateX(3px);
+    color: var(--txt);
+  }
+
+  .option:hover::before {
+    border-color: var(--accent-lt);
+    box-shadow: 0 0 8px rgba(177,106,162,0.5);
+  }
+
+  .option.selected {
+    background: linear-gradient(135deg, rgba(115,57,96,0.4), rgba(70,29,52,0.6));
+    border-color: var(--accent-lt);
+    color: var(--moon);
+  }
+
+  .option.selected::before {
+    background: var(--accent-lt);
+    border-color: var(--accent-lt);
+    box-shadow: 0 0 12px rgba(177,106,162,0.7);
+  }
+
+  /* ===== RESULT ===== */
+  .result-eyebrow {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-lt);
+    margin-bottom: 14px;
+  }
+
+  .result-tagline-italic {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--detail);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .result-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(38px, 7vw, 60px);
+    line-height: 1.05;
+    text-align: center;
+    color: var(--txt);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .result-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-lt);
+  }
+
+  .result-pattern-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: var(--detail);
+    margin-bottom: 14px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+  }
+
+  .secondary-note {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--txt-faded);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .secondary-note .arch-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent-lt);
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  .divider-stars {
+    text-align: center;
+    margin: 30px 0;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.8em;
+    opacity: 0.7;
+  }
+
+  .result-section {
+    margin: 32px 0;
+  }
+
+  .result-section h3 {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent-lt);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .result-section h3 .flank {
+    color: var(--accent);
+    margin: 0 10px;
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+
+  .result-section p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--txt-sec);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .result-section p em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--accent-lt);
+  }
+
+  .result-section ul {
+    list-style: none;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .result-section ul li {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--txt-sec);
+    padding: 12px 0 12px 28px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .result-section ul li:last-child { border-bottom: none; }
+
+  .result-section ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 6px;
+    top: 12px;
+    color: var(--tertiary);
+    font-size: 7px;
+  }
+
+  .closing {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3.5vw, 28px);
+    line-height: 1.4;
+    text-align: center;
+    color: var(--txt);
+    font-weight: 500;
+    margin: 44px auto 32px;
+    max-width: 560px;
+    letter-spacing: -0.005em;
+    padding: 0 16px;
+  }
+
+  .closing em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-lt);
+  }
+
+  /* ===== CTA BLOCK ===== */
+  .cta-block {
+    text-align: center;
+    margin: 48px -48px -56px;
+    padding: 48px 40px 52px;
+    background: linear-gradient(150deg, rgba(17,8,32,0.7) 0%, rgba(42,13,58,0.7) 35%, rgba(74,21,69,0.7) 60%, rgba(122,30,80,0.7) 100%);
+    border-top: 1px solid var(--border-lt);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(247,237,241,0.35), transparent),
+      radial-gradient(1.5px 1.5px at 80% 70%, rgba(247,237,241,0.3), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(247,237,241,0.25), transparent);
+    background-size: 400px 400px, 500px 500px, 350px 350px;
+  }
+
+  .cta-block::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%; height: 140%;
+    background: radial-gradient(circle, rgba(177,106,162,0.15), transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-block > * { position: relative; z-index: 1; }
+
+  .cta-block .lede {
+    font-size: 14px;
+    margin-bottom: 26px;
+    color: var(--txt-sec);
+  }
+
+  @media (max-width: 640px) {
+    .cta-block { margin: 40px -22px -40px; padding: 40px 24px 44px; }
+  }
+
+  /* ===== EMAIL CAPTURE ===== */
+  .email-capture {
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .email-capture .micro-label {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--orchid);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .email-input-row {
+    display: flex;
+    gap: 8px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .email-input {
+    flex: 1;
+    padding: 14px 18px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    background: rgba(13, 6, 24, 0.6);
+    border: 1px solid var(--border-lt);
+    border-radius: 50px;
+    color: var(--txt);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .email-input:focus {
+    border-color: var(--accent-lt);
+    box-shadow: 0 0 12px rgba(177,106,162,0.3);
+  }
+
+  .email-input::placeholder {
+    color: var(--txt-faded);
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 14px;
+  }
+
+  .email-btn {
+    padding: 14px 22px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--accent), var(--dark-mid));
+    color: var(--moon);
+    border: 1px solid var(--accent-lt);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .email-btn:hover {
+    background: linear-gradient(135deg, var(--accent-lt), var(--tertiary));
+    box-shadow: 0 0 16px rgba(177,106,162,0.4);
+  }
+
+  @media (max-width: 540px) {
+    .email-input-row { flex-direction: column; }
+    .email-input { text-align: center; }
+  }
+
+  /* ===== TRANSITIONS ===== */
+  .view {
+    display: none;
+    animation: fadeUp 0.7s var(--ease);
+  }
+  .view.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 rgba(177,106,162,0); }
+    50% { box-shadow: 0 0 30px rgba(177,106,162,0.3); }
+  }
+
+  .stagger > * { opacity: 0; animation: fadeUp 0.6s var(--ease) forwards; }
+  .stagger > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger > *:nth-child(2) { animation-delay: 0.15s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.25s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.35s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.45s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.55s; }
+  .stagger > *:nth-child(7) { animation-delay: 0.65s; }
+  .stagger > *:nth-child(8) { animation-delay: 0.75s; }
+  .stagger > *:nth-child(9) { animation-delay: 0.85s; }
+  .stagger > *:nth-child(10) { animation-delay: 0.95s; }
+
+  .restart {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .restart a {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--txt-faded);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .restart a:hover { color: var(--accent-lt); border-bottom-color: var(--accent-lt); }
+
+  /* Footer brand line */
+  .brand-foot {
+    text-align: center;
+    padding: 24px 16px;
+    font-family: var(--font-sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--txt-quiet);
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-foot .dot { color: var(--accent); margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<!-- ============== INTRO ============== -->
+<section id="view-intro" class="view active stage">
+  <div class="panel stagger">
+    <div class="micro-italic">Beautiful Badass</div>
+    <div class="eyebrow">A Quantum Queen Assessment <span class="star">✦</span> 2 Minutes</div>
+    <h1 class="title">What Survival Identity<br/>Are You <em>Operating From?</em></h1>
+    <div class="ornament"><span>✦</span><span>✦</span><span>✦</span></div>
+    <p class="lede">You may look successful on the outside… but subconsciously still operate from emotional survival patterns affecting your relationships, abundance, confidence, visibility, and <em>self-trust</em>.</p>
+    <p class="lede" style="margin-top: 22px;"><em>This assessment will reveal:</em></p>
+    <ul class="reveal-list">
+      <li>Your <em>dominant</em> survival identity</li>
+      <li>How it's quietly keeping you stuck</li>
+      <li>What it's actually costing you</li>
+      <li>The next identity shift your nervous system is asking for</li>
+    </ul>
+    <div class="cta-row">
+      <button class="btn" onclick="startQuiz()"><span>Begin The Assessment</span></button>
+      <div class="micro-note">12 Questions <span class="dot">✦</span> Completely Private</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== QUIZ ============== -->
+<section id="view-quiz" class="view stage">
+  <div class="panel">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="progress-label">Question 01 / 12</span>
+        <span class="pct" id="progress-pct">8%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+    <div id="question-container"></div>
+  </div>
+</section>
+
+<!-- ============== RESULT ============== -->
+<section id="view-result" class="view stage">
+  <div class="panel" id="result-container"></div>
+</section>
+
+<div class="brand-foot">Badass Alchemy <span class="dot">✦</span> Baddie Society <span class="dot">✦</span> Quantum Queen</div>
+
+<script>
+/* ============================================================
+   ARCHETYPE DATA
+============================================================ */
+const ARCHETYPES = {
+  overthinker: {
+    name: "The Overthinker",
+    tagline: "Safety, sought through control of the unknown.",
+    pattern: "Your nervous system learned early that being prepared meant being safe. So you think. You analyze. You play scenarios forward and backward — searching for the version of the future where nothing can hurt you. But the mind cannot deliver the certainty the body is asking for. And so you stay in the loop.",
+    showsUp: [
+      "Replaying conversations long after they're over",
+      "Researching the decision instead of making it",
+      "Feeling anxious in stillness",
+      "Mistrusting your own intuition until it can be 'proven'",
+      "Procrastinating disguised as 'thinking it through'"
+    ],
+    costing: "You are spending your most creative years <em>rehearsing</em> instead of living. The opportunities you analyze are the ones other women — less qualified, less brilliant — quietly walk through. Your magnetism is dimmed by the static of your own mind. And the love, money, and recognition you crave cannot land in a body that is bracing.",
+    shift: "Your next identity shift is from <em>certainty</em> to <em>embodied trust</em>. Not blind faith. Sovereign knowing. The woman you're becoming makes decisions from her body, not her browser tabs. She moves before she's ready because she has become her own evidence.",
+    closing: "You were never broken. You were <em>protective</em>. And it's safe now to put the armor down."
+  },
+  performer: {
+    name: "The Performer",
+    tagline: "Worth, earned through what she produces.",
+    pattern: "Somewhere along the way you learned that love was conditional — and the condition was excellence. So you became excellent. You out-prepared, out-delivered, out-achieved. And it worked. The applause came. The promotions came. The praise came. But the rest never did. Because the part of you that needed to be loved <em>without performing</em> never got the message.",
+    showsUp: [
+      "Feeling worthy only after a 'win'",
+      "An identity quietly fused with your output",
+      "Burnout you romanticize as ambition",
+      "Difficulty resting without guilt",
+      "Saying yes when your body is already saying no"
+    ],
+    costing: "You are building a life that looks impressive and feels lonely. Every achievement raises the floor of what 'enough' means — so the finish line keeps moving. You attract relationships and clients who appreciate what you <em>do</em>, not who you <em>are</em>. And the day you stop performing is the day you're most afraid to meet yourself.",
+    shift: "Your next identity shift is from <em>earning</em> to <em>receiving</em>. From proving to <em>presence</em>. The woman you're becoming knows her worth is not negotiable with her calendar. She is paid, chosen, and adored for who she is — not what she can squeeze out of her nervous system this quarter.",
+    closing: "You don't have to earn the life you already deserve. You only have to stop <em>declining</em> it."
+  },
+  hyperIndependent: {
+    name: "The Hyper-Independent Woman",
+    tagline: "Self-reliance, born from the moment someone let her down.",
+    pattern: "You learned early that the safest person to depend on was yourself. Maybe someone broke a promise. Maybe support came with strings. Maybe you watched a woman you loved be made small by needing someone. So you decided: never me. And you built a life so capable, so self-contained, that no one could leave you again — because there was nothing left to leave.",
+    showsUp: [
+      "An almost-physical resistance to receiving help",
+      "Pride in 'doing it all myself' that's quietly exhausting",
+      "Partners and friends who feel kept at arm's length",
+      "Discomfort when offered care, money, or compliments",
+      "Loneliness that no amount of success seems to touch"
+    ],
+    costing: "You are mistaking <em>armor</em> for power. The intimacy you crave cannot survive inside the fortress you've built to be safe. The wealth, love, and ease available to you cannot enter through a closed hand. And the most exhausting part is no one knows how tired you are — because you've made sure of it.",
+    shift: "Your next identity shift is from <em>self-protection</em> to <em>sovereign receptivity</em>. The woman you're becoming knows that receiving is not weakness — it is the most advanced expression of trust. She is supported, held, and resourced. Not because she gave up her power. Because she finally <em>understood</em> it.",
+    closing: "Independence kept you alive. <em>Interdependence</em> is what will make you free."
+  },
+  selfAbandoner: {
+    name: "The Self-Abandoner",
+    tagline: "Belonging, bought with pieces of herself.",
+    pattern: "You learned that love was something you had to manage — by being good, agreeable, attuned, small enough not to threaten anyone. So you became fluent in everyone else's needs and a stranger to your own. You don't even know when it happens anymore. The 'yes' is already out of your mouth before your body has been consulted. And the relationships you're in are built on a version of you that isn't entirely real.",
+    showsUp: [
+      "Boundaries that dissolve the moment someone pushes",
+      "Resentment that lives quietly under your kindness",
+      "Forgetting what you actually want",
+      "Shapeshifting to match the room",
+      "A chronic sense of being unseen — by people you've never let see you"
+    ],
+    costing: "You are paying for love with your <em>self</em>, and the price keeps going up. The people in your life are in relationship with your accommodation, not your essence. Your desires are atrophying from disuse. And the longer this continues, the harder it becomes to remember the woman underneath — the one with preferences, edges, and a voice.",
+    shift: "Your next identity shift is from <em>abandonment</em> to <em>devotion</em> — to yourself first. The woman you're becoming knows that being chosen by everyone is not the same as being <em>chosen by the right ones</em>. She is no longer auditioning for her own life.",
+    closing: "The relationships built on your smallness cannot survive your <em>return</em>. Let them go."
+  },
+  invisible: {
+    name: "The Invisible Woman",
+    tagline: "Visibility, refused as a survival strategy.",
+    pattern: "Somewhere in your story, being seen meant being in danger — of judgment, of criticism, of envy, of consequence. So you learned to make yourself smaller than your gift. You hide inside competence. You wait until you're 'ready.' You let other women — less talented, less prepared — take the room you were built for. And you tell yourself it's humility. It isn't. It's <em>protection</em>.",
+    showsUp: [
+      "Watching others receive what you're more qualified for",
+      "Posting, then deleting. Speaking, then second-guessing.",
+      "Procrastination that intensifies the closer you get to visibility",
+      "An almost-physical flinch at attention",
+      "A persistent, private sense that you were meant for <em>more</em>"
+    ],
+    costing: "You are starving the world of the exact medicine you were sent here to deliver. The women you could lead are still waiting. The money flowing to less-resonant voices is the money your visibility was meant to <em>redirect</em>. And every day you hide, the gap between who you <em>are</em> and who you're <em>letting yourself be</em> becomes a kind of grief.",
+    shift: "Your next identity shift is from <em>hiding</em> to <em>holy visibility</em>. The woman you're becoming understands that her presence is not a performance — it is a transmission. She is no longer waiting to be ready. She is becoming ready <em>by being seen</em>.",
+    closing: "The room is waiting for the woman you've been <em>rehearsing</em>. It is time."
+  }
+};
+
+/* ============================================================
+   QUESTIONS
+============================================================ */
+const QUESTIONS = [
+  {
+    q: "When something good happens to you, your first instinct is to —",
+    options: [
+      { text: "Quietly brace for the other shoe to drop.",          weights: { ot: 3, iv: 1 } },
+      { text: "Look for the next thing to achieve.",                 weights: { pf: 3 } },
+      { text: "Downplay it before anyone notices.",                  weights: { iv: 3, sa: 1 } },
+      { text: "Feel uncomfortable if someone wants to celebrate you.", weights: { hi: 2, iv: 2 } }
+    ]
+  },
+  {
+    q: "Rest, if you're honest, feels —",
+    options: [
+      { text: "Like something I have to earn first.",                weights: { pf: 3 } },
+      { text: "Like an opening for everything I'm avoiding to surface.", weights: { ot: 3 } },
+      { text: "Inefficient. I could be handling things.",            weights: { hi: 3, pf: 1 } },
+      { text: "Selfish. There's always someone who needs me.",       weights: { sa: 3 } }
+    ]
+  },
+  {
+    q: "Someone offers you significant help — financial, emotional, or otherwise. You notice —",
+    options: [
+      { text: "An almost-immediate impulse to decline.",             weights: { hi: 3 } },
+      { text: "A worry you'll owe them something later.",            weights: { sa: 2, hi: 1 } },
+      { text: "A spiral of overthinking whether to accept.",         weights: { ot: 3 } },
+      { text: "A quiet guilt — as if I haven't earned it.",          weights: { pf: 2, iv: 1 } }
+    ]
+  },
+  {
+    q: "When you imagine being fully seen — your work, your voice, your face — at scale, your body —",
+    options: [
+      { text: "Tightens. There's a flinch I can't quite explain.",   weights: { iv: 3 } },
+      { text: "Goes into preparation mode. I'd need to be ready first.", weights: { pf: 2, ot: 2 } },
+      { text: "Wants to control the narrative completely.",          weights: { hi: 2, ot: 2 } },
+      { text: "Worries about who I'd disappoint or threaten.",       weights: { sa: 3 } }
+    ]
+  },
+  {
+    q: "In your closest relationships, the version of you they know is —",
+    options: [
+      { text: "The capable one. The one who handles things.",        weights: { hi: 3, pf: 1 } },
+      { text: "The accommodating one. The one who makes it easy.",   weights: { sa: 3 } },
+      { text: "The successful one. The one who's doing well.",       weights: { pf: 3 } },
+      { text: "A curated version. The full me is mostly private.",   weights: { iv: 2, ot: 2 } }
+    ]
+  },
+  {
+    q: "A decision is sitting in front of you. You usually —",
+    options: [
+      { text: "Research, list, weigh — and still feel unsure.",      weights: { ot: 3 } },
+      { text: "Default to whatever keeps the peace.",                weights: { sa: 3 } },
+      { text: "Decide alone. I don't want to be influenced.",        weights: { hi: 3 } },
+      { text: "Choose the path with the most visible payoff.",       weights: { pf: 2, iv: 1 } }
+    ]
+  },
+  {
+    q: "Your relationship with money currently feels most like —",
+    options: [
+      { text: "A scoreboard for whether I'm doing enough.",          weights: { pf: 3 } },
+      { text: "Something I have to white-knuckle into existence.",   weights: { hi: 3, ot: 1 } },
+      { text: "Something I shrink from asking for, raising, or naming.", weights: { sa: 2, iv: 2 } },
+      { text: "Something I overthink — pricing, spending, all of it.", weights: { ot: 3 } }
+    ]
+  },
+  {
+    q: "The thought you'd never say out loud is closest to —",
+    options: [
+      { text: "If I stopped performing, I'm not sure I'd be loved.", weights: { pf: 3 } },
+      { text: "I don't actually know what I want anymore.",          weights: { sa: 3 } },
+      { text: "No one is coming. It's always been on me.",           weights: { hi: 3 } },
+      { text: "I'm meant for more than this — and it terrifies me.", weights: { iv: 3, ot: 1 } }
+    ]
+  },
+  {
+    q: "When a conflict arises with someone you care about, you —",
+    options: [
+      { text: "Replay it for days afterward, editing what I should have said.", weights: { ot: 3 } },
+      { text: "Smooth it over before my own feelings have finished forming.",   weights: { sa: 3 } },
+      { text: "Pull back emotionally. I don't need this.",           weights: { hi: 3 } },
+      { text: "Try to be the bigger person — even when I'm the one hurt.", weights: { pf: 2, sa: 1 } }
+    ]
+  },
+  {
+    q: "Your body, lately, has been —",
+    options: [
+      { text: "Tense in places I can't seem to soften.",             weights: { hi: 2, ot: 2 } },
+      { text: "Tired in a way sleep doesn't fix.",                   weights: { pf: 3 } },
+      { text: "Quiet. I've been ignoring its signals.",              weights: { sa: 3 } },
+      { text: "Bracing — like it's waiting for something.",          weights: { iv: 2, ot: 2 } }
+    ]
+  },
+  {
+    q: "When you watch another woman receive something you want — visibility, love, money, ease — you feel —",
+    options: [
+      { text: "Curious. What did she do that I haven't?",            weights: { pf: 2, ot: 1 } },
+      { text: "A pang of 'why not me' — and then guilt for thinking it.", weights: { iv: 3 } },
+      { text: "Quietly competitive. I could do it better.",          weights: { hi: 2, pf: 1 } },
+      { text: "Happy for her — and a little erased.",                weights: { sa: 3 } }
+    ]
+  },
+  {
+    q: "If you let yourself feel it, the woman underneath all of this is —",
+    options: [
+      { text: "Exhausted from holding everything together.",         weights: { hi: 2, pf: 2 } },
+      { text: "Quietly grieving the version of her life she hasn't lived yet.", weights: { iv: 3 } },
+      { text: "Hungry to be known — fully, without performing.",     weights: { sa: 2, pf: 1 } },
+      { text: "Ready to stop second-guessing everything she already knows.", weights: { ot: 3 } }
+    ]
+  }
+];
+
+/* ============================================================
+   STATE + FLOW
+============================================================ */
+const state = {
+  current: 0,
+  scores: { ot: 0, pf: 0, hi: 0, sa: 0, iv: 0 },
+  answers: []
+};
+
+function startQuiz() {
+  document.getElementById('view-intro').classList.remove('active');
+  document.getElementById('view-quiz').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const idx = state.current;
+  const q = QUESTIONS[idx];
+  const total = QUESTIONS.length;
+  const pct = Math.round(((idx) / total) * 100);
+  const fillPct = Math.round(((idx + 1) / total) * 100);
+
+  document.getElementById('progress-label').textContent =
+    `Question ${String(idx + 1).padStart(2, '0')} / ${total}`;
+  document.getElementById('progress-pct').textContent = `${pct}%`;
+  document.getElementById('progress-fill').style.width = `${(idx / total) * 100}%`;
+
+  const container = document.getElementById('question-container');
+  container.innerHTML = `
+    <div class="q-number">— ${String(idx + 1).padStart(2, '0')} —</div>
+    <h2 class="q-text">${q.q}</h2>
+    <div class="options stagger">
+      ${q.options.map((opt, i) => `
+        <button class="option" data-i="${i}">${opt.text}</button>
+      `).join('')}
+    </div>
+  `;
+
+  container.querySelectorAll('.option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = parseInt(btn.dataset.i, 10);
+      btn.classList.add('selected');
+      setTimeout(() => answerQuestion(i, fillPct), 280);
+    });
+  });
+}
+
+function answerQuestion(optionIdx, fillPct) {
+  const q = QUESTIONS[state.current];
+  const opt = q.options[optionIdx];
+  state.answers.push(optionIdx);
+  for (const [key, val] of Object.entries(opt.weights)) {
+    state.scores[key] += val;
+  }
+  document.getElementById('progress-fill').style.width = `${fillPct}%`;
+  state.current++;
+  if (state.current >= QUESTIONS.length) {
+    setTimeout(showResult, 450);
+  } else {
+    setTimeout(renderQuestion, 280);
+  }
+}
+
+function showResult() {
+  const sorted = Object.entries(state.scores).sort((a, b) => b[1] - a[1]);
+  const primaryKey = sorted[0][0];
+  const secondaryKey = sorted[1][0];
+  const keyMap = {
+    ot: 'overthinker', pf: 'performer', hi: 'hyperIndependent',
+    sa: 'selfAbandoner', iv: 'invisible'
+  };
+  const arch = ARCHETYPES[keyMap[primaryKey]];
+  const secondaryArch = ARCHETYPES[keyMap[secondaryKey]];
+
+  document.getElementById('view-quiz').classList.remove('active');
+  document.getElementById('view-result').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const html = `
+    <div class="stagger">
+      <div class="result-tagline-italic">Your subconscious blueprint</div>
+      <div class="result-eyebrow">Your Dominant Survival Identity</div>
+      <h1 class="result-name">${arch.name}</h1>
+      <p class="result-pattern-line">${arch.tagline}</p>
+      <div class="secondary-note">With a secondary thread of <span class="arch-name">${secondaryArch.name}</span></div>
+      <div class="divider-stars">✦ ✦ ✦</div>
+
+      <div class="result-section">
+        <h3><span class="flank">◆</span>The Core Pattern<span class="flank">◆</span></h3>
+        <p>${arch.pattern}</p>
+      </div>
+
+      <div class="result-section">
+        <h3><span class="flank">◆</span>How It Shows Up<span class="flank">◆</span></h3>
+        <ul>
+          ${arch.showsUp.map(s => `<li>${s}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="result-section">
+        <h3><span class="flank">◆</span>What It's Costing You<span class="flank">◆</span></h3>
+        <p>${arch.costing}</p>
+      </div>
+
+      <div class="result-section">
+        <h3><span class="flank">◆</span>Your Next Identity Shift<span class="flank">◆</span></h3>
+        <p>${arch.shift}</p>
+      </div>
+
+      <div class="closing">"${arch.closing}"</div>
+
+      <div class="cta-block">
+        <div class="micro-italic" style="color: var(--accent-lt); margin-bottom: 8px;">The Next Step</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 4vw, 34px); color: var(--txt); line-height: 1.25; margin-bottom: 18px;">
+          Stop waiting for permission<br/>to become <em style="color: var(--accent-lt); font-style: italic; font-weight: 400;">her.</em>
+        </h2>
+        <p class="lede">This is exactly the identity recalibration work we go deeply into inside <em>Quantum Queen</em> — the 90-day container for women rewriting the subconscious patterns running their relationships, money, and visibility.</p>
+        <button class="btn" onclick="openMasterclass()"><span>Watch The Free Masterclass</span></button>
+
+        <div class="email-capture">
+          <div class="micro-label">Or — Receive Your Full Personalized Breakdown</div>
+          <div class="email-input-row">
+            <input type="email" class="email-input" id="email-field" placeholder="your email" />
+            <button class="email-btn" onclick="submitEmail()">Send It</button>
+          </div>
+          <div class="micro-note" style="margin-top: 14px;">Includes your secondary archetype layer <span class="dot">✦</span> a private invitation</div>
+        </div>
+      </div>
+
+      <div class="restart">
+        <a onclick="restart()">Retake The Assessment</a>
+      </div>
+    </div>
+  `;
+  document.getElementById('result-container').innerHTML = html;
+}
+
+function openMasterclass() {
+  // === EDIT THIS URL ===
+  window.open('https://YOUR-MASTERCLASS-URL.com', '_blank');
+}
+
+function submitEmail() {
+  const email = document.getElementById('email-field').value.trim();
+  if (!email || !email.includes('@')) {
+    const input = document.getElementById('email-field');
+    input.style.borderColor = 'var(--detail)';
+    input.placeholder = 'a valid email, queen';
+    input.value = '';
+    setTimeout(() => { input.style.borderColor = ''; }, 2000);
+    return;
+  }
+  // === HOOK YOUR GOHIGHLEVEL / MANYCHAT ENDPOINT HERE ===
+  const captureRow = document.querySelector('.email-capture');
+  captureRow.innerHTML = `
+    <div class="micro-label" style="color: var(--accent-lt);">✦  Beautifully Received  ✦</div>
+    <p style="font-family: var(--font-display); font-style: italic; font-size: 17px; text-align: center; color: var(--txt); margin-top: 14px; line-height: 1.5;">Your personalized breakdown is on its way.<br/>Check your inbox in the next few minutes.</p>
+  `;
+}
+
+function restart() {
+  state.current = 0;
+  state.scores = { ot: 0, pf: 0, hi: 0, sa: 0, iv: 0 };
+  state.answers = [];
+  document.getElementById('view-result').classList.remove('active');
+  document.getElementById('view-intro').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
