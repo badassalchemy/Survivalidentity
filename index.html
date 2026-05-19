@@ -20,13 +20,13 @@
     --detail:     #C4789A;     /* blush */
     --violet:     #24123F;
     --lavender:   #9CBCB9;
-    --orchid:     #C6B6CD;
-    --moon:       #F7EDF1;     /* moon pearl - body text */
-    --txt:        #F7EDF1;
-    --txt-sec:    #E8D4E0;
-    --txt-muted:  #C4A0B8;
-    --txt-faded:  #8A6080;
-    --txt-quiet:  #5A3A50;
+    --orchid:     #D6C5DD;
+    --moon:       #FBF5F8;     /* moon pearl - body text */
+    --txt:        #FBF5F8;
+    --txt-sec:    #F2DFE9;     /* lifted from #E8D4E0 - body paragraphs */
+    --txt-muted:  #DAB8C9;     /* lifted from #C4A0B8 - lede, intro subtext */
+    --txt-faded:  #B088A0;     /* lifted from #8A6080 - eyebrows, micro-notes */
+    --txt-quiet:  #7A5970;     /* lifted from #5A3A50 - footer brand line */
     --border:     rgba(179,106,162,0.15);
     --border-lt:  rgba(179,106,162,0.28);
     --shadow:     rgba(36,10,25,0.4);
@@ -220,7 +220,7 @@
 
   .lede {
     font-family: var(--font-sans);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.75;
     color: var(--txt-muted);
     text-align: center;
@@ -232,8 +232,10 @@
   .lede em {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 16px;
-    color: var(--detail);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent-lt);
+    text-shadow: 0 0 14px rgba(177, 106, 162, 0.3);
   }
 
   .reveal-list {
@@ -244,7 +246,7 @@
 
   .reveal-list li {
     font-family: var(--font-sans);
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--txt-sec);
     padding: 14px 0 14px 32px;
@@ -258,15 +260,15 @@
     content: '✦';
     position: absolute;
     left: 0;
-    top: 14px;
+    top: 16px;
     color: var(--accent-lt);
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .reveal-list em {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 15px;
+    font-size: 18px;
     color: var(--accent-lt);
   }
 
@@ -274,11 +276,11 @@
   .btn {
     display: inline-block;
     font-family: var(--font-sans);
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    font-size: 13px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 700;
-    padding: 16px 38px;
+    padding: 18px 44px;
     background: linear-gradient(135deg, var(--accent), var(--dark-mid));
     color: var(--moon);
     border: 1px solid var(--accent-lt);
@@ -393,10 +395,10 @@
 
   .option {
     font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.55;
     color: var(--txt-sec);
-    padding: 18px 24px 18px 50px;
+    padding: 20px 24px 20px 50px;
     background: rgba(13, 6, 24, 0.5);
     border: 1px solid var(--border);
     cursor: pointer;
@@ -459,7 +461,7 @@
 
   .result-tagline-italic {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 18px;
     font-style: italic;
     color: var(--detail);
     text-align: center;
@@ -487,34 +489,37 @@
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 21px;
     text-align: center;
     color: var(--detail);
     margin-bottom: 14px;
-    max-width: 520px;
+    max-width: 540px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .secondary-note {
     font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--txt-faded);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--txt-sec);
     text-align: center;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
+    max-width: 540px;
   }
 
   .secondary-note .arch-name {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 500;
     color: var(--accent-lt);
     text-transform: none;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
   }
 
   .divider-stars {
@@ -550,18 +555,18 @@
 
   .result-section p {
     font-family: var(--font-sans);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.75;
     color: var(--txt-sec);
     text-align: center;
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto;
   }
 
   .result-section p em {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--accent-lt);
     text-shadow: 0 0 12px rgba(177, 106, 162, 0.25);
@@ -569,16 +574,16 @@
 
   .result-section ul {
     list-style: none;
-    max-width: 480px;
+    max-width: 500px;
     margin: 0 auto;
   }
 
   .result-section ul li {
     font-family: var(--font-sans);
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.55;
     color: var(--txt-sec);
-    padding: 12px 0 12px 28px;
+    padding: 14px 0 14px 28px;
     text-align: left;
     border-bottom: 1px solid var(--border);
     position: relative;
@@ -590,9 +595,9 @@
     content: '◆';
     position: absolute;
     left: 6px;
-    top: 12px;
+    top: 18px;
     color: var(--tertiary);
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .closing {
@@ -620,31 +625,9 @@
     text-align: center;
     margin: 48px -48px -56px;
     padding: 48px 40px 52px;
-    background: linear-gradient(150deg, rgba(17,8,32,0.7) 0%, rgba(42,13,58,0.7) 35%, rgba(74,21,69,0.7) 60%, rgba(122,30,80,0.7) 100%);
+    background: rgba(13, 6, 24, 0.5);
     border-top: 1px solid var(--border-lt);
     position: relative;
-    overflow: hidden;
-  }
-
-  .cta-block::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 20% 30%, rgba(247,237,241,0.35), transparent),
-      radial-gradient(1.5px 1.5px at 80% 70%, rgba(247,237,241,0.3), transparent),
-      radial-gradient(1px 1px at 50% 50%, rgba(247,237,241,0.25), transparent);
-    background-size: 400px 400px, 500px 500px, 350px 350px;
-  }
-
-  .cta-block::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140%; height: 140%;
-    background: radial-gradient(circle, rgba(177,106,162,0.15), transparent 60%);
-    pointer-events: none;
   }
 
   .cta-block > * { position: relative; z-index: 1; }
@@ -679,9 +662,9 @@
     justify-content: space-between;
     align-items: baseline;
     font-family: var(--font-sans);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--txt-muted);
   }
 
@@ -692,7 +675,7 @@
   .pattern-row.primary .pattern-name {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 16px;
+    font-size: 19px;
     font-weight: 500;
     color: var(--accent-lt);
     letter-spacing: 0;
@@ -704,7 +687,7 @@
 
   .pattern-pct {
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: var(--detail);
     letter-spacing: 0;
@@ -712,7 +695,7 @@
 
   .pattern-row.primary .pattern-pct {
     color: var(--accent-lt);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
   }
 
@@ -844,9 +827,9 @@
 
   .email-input {
     flex: 1;
-    padding: 14px 18px;
+    padding: 16px 20px;
     font-family: var(--font-sans);
-    font-size: 13px;
+    font-size: 16px;
     background: rgba(13, 6, 24, 0.6);
     border: 1px solid var(--border-lt);
     border-radius: 50px;
@@ -864,13 +847,13 @@
     color: var(--txt-faded);
     font-style: italic;
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .email-btn {
-    padding: 14px 22px;
+    padding: 16px 26px;
     font-family: var(--font-sans);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -975,7 +958,7 @@
     <h1 class="title">What Survival Identity<br/>Are You <em>Operating From?</em></h1>
     <div class="ornament"><span>✦</span><span>✦</span><span>✦</span></div>
     <p class="lede">You may look successful on the outside… but subconsciously still operate from emotional survival patterns affecting your relationships, abundance, confidence, visibility, and <em>self-trust</em>.</p>
-    <p class="lede" style="margin-top: 22px;"><em>This assessment will reveal:</em></p>
+    <p class="lede" style="margin-top: 28px; margin-bottom: 6px;"><em style="font-size: 24px; font-weight: 600; color: var(--accent-lt); text-shadow: 0 0 18px rgba(177, 106, 162, 0.4);">This assessment will reveal:</em></p>
     <ul class="reveal-list">
       <li>Your <em>dominant</em> survival identity</li>
       <li>How it's quietly keeping you stuck</li>
@@ -1343,8 +1326,8 @@ function showResult() {
 
       <div class="result-section">
         <h3><span class="flank">◆</span>Your Full Pattern<span class="flank">◆</span></h3>
-        <p style="font-size: 13px; color: var(--txt-muted); margin-bottom: 22px; max-width: 480px;">
-          You're not one archetype. You're a <em style="font-family: var(--font-display); font-style: italic; color: var(--accent-lt); font-size: 15px;">pattern</em>. Here's how your survival identity distributes across all five:
+        <p style="font-size: 15px; color: var(--txt-muted); margin-bottom: 22px; max-width: 480px; margin-left: auto; margin-right: auto; text-align: center; line-height: 1.7;">
+          You're not one archetype. You're a <em style="font-family: var(--font-display); font-style: italic; color: var(--accent-lt); font-size: 18px;">pattern</em>. Here's how your survival identity distributes across all five:
         </p>
         <div class="pattern-breakdown">
           ${breakdownBars}
@@ -1382,29 +1365,16 @@ function showResult() {
       </div>
 
       <div class="cta-block">
-        <div class="micro-italic" style="color: var(--accent-lt); margin-bottom: 8px;">The Recalibration</div>
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4.5vw, 38px); color: var(--txt); line-height: 1.2; margin-bottom: 18px;">
-          Quantum <em style="color: var(--accent-lt); font-style: italic; font-weight: 400;">Queen.</em>
+        <div class="micro-italic" style="color: var(--accent-lt); margin-bottom: 6px;">Go Deeper</div>
+        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 42px); color: var(--txt); line-height: 1.15; margin-bottom: 18px; letter-spacing: -0.01em;">
+          See the work that actually<br/><em style="color: var(--accent-lt); font-style: italic; font-weight: 500;">unravels this pattern.</em>
         </h2>
-        <p class="lede" style="font-style: italic; color: var(--detail); font-family: var(--font-display); font-size: 18px; margin-bottom: 22px;">
-          The 90-day identity recalibration for women rewriting the subconscious patterns running their relationships, money, and visibility.
-        </p>
-
-        <div class="modules-grid">
-          <div class="module-item"><span class="mod-num">01</span><span class="mod-name">The Foundation</span></div>
-          <div class="module-item"><span class="mod-num">02</span><span class="mod-name">Exploring Your Dark Side</span></div>
-          <div class="module-item"><span class="mod-num">03</span><span class="mod-name">The Limiting Belief Audit</span></div>
-          <div class="module-item"><span class="mod-num">04</span><span class="mod-name">Quantum Leaping</span></div>
-          <div class="module-item"><span class="mod-num">05</span><span class="mod-name">Sovereign Queen Era</span></div>
-          <div class="module-item"><span class="mod-num">06</span><span class="mod-name">Custom Tracks &amp; Integration</span></div>
-        </div>
-
-        <p class="lede" style="margin-top: 24px;">
-          Every survival identity — the Overthinker, the Performer, the Hyper-Independent, the Self-Abandoner, the Invisible — gets dismantled across these six modules. <em>Not in pieces. As a whole woman.</em>
+        <p class="lede" style="font-style: italic; font-family: var(--font-display); font-size: clamp(17px, 2.2vw, 19px); margin-bottom: 30px; color: var(--detail);">
+          At the root. In the body. For good.
         </p>
 
         <button class="btn" onclick="openMasterclass()"><span>Watch The Free Masterclass</span></button>
-        <div class="micro-note" style="margin-top: 16px;">A behind-the-scenes look at the full 90-day process</div>
+        <div class="micro-note" style="margin-top: 16px;">A private invitation <span class="dot">✦</span> 45 minutes</div>
 
         <div class="email-capture">
           <div class="micro-label">Or — Receive Your Full Personalized Breakdown</div>
@@ -1412,7 +1382,7 @@ function showResult() {
             <input type="email" class="email-input" id="email-field" placeholder="your email" />
             <button class="email-btn" onclick="submitEmail()">Send It</button>
           </div>
-          <div class="micro-note" style="margin-top: 14px;">Includes your full archetype profile <span class="dot">✦</span> a private invitation</div>
+          <div class="micro-note" style="margin-top: 14px;">Your full archetype profile delivered to your inbox</div>
         </div>
       </div>
 
@@ -1425,8 +1395,7 @@ function showResult() {
 }
 
 function openMasterclass() {
-  // === EDIT THIS URL ===
-  window.open('https://YOUR-MASTERCLASS-URL.com', '_blank');
+  window.open('https://www.beabeautifulbadass.com/quantumqueen', '_blank');
 }
 
 function submitEmail() {
